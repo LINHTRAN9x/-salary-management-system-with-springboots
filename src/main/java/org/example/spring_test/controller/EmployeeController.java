@@ -29,14 +29,14 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
-    // Tạo nhân viên mới
+
     @PostMapping
     public ResponseEntity<EmployeeResDTO> createEmployee(@RequestBody EmployeeReqDTO employeeReqDTO) {
         EmployeeResDTO createdEmployee = employeeService.saveEmployee(employeeReqDTO);
         return ResponseEntity.ok(createdEmployee);
     }
 
-    // Lấy thông tin chi tiết của một nhân viên theo ID
+
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeResDTO> getEmployeeById(@PathVariable Long id) {
         return employeeService.getEmployeeById(id)
@@ -44,21 +44,21 @@ public class EmployeeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Cập nhật thông tin nhân viên
+
     @PutMapping("/{id}")
     public ResponseEntity<EmployeeResDTO> updateEmployee(@PathVariable Long id, @RequestBody EmployeeReqDTO employeeReqDTO) {
         EmployeeResDTO updatedEmployee = employeeService.updateEmployee(id, employeeReqDTO);
         return ResponseEntity.ok(updatedEmployee);
     }
 
-    // Xóa nhân viên theo ID
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
         return ResponseEntity.noContent().build();
     }
 
-    // Tìm kiếm nhân viên theo tên
+
     @GetMapping("/search")
     public ResponseEntity<List<EmployeeResDTO>> searchEmployees(@RequestParam String name) {
         List<EmployeeResDTO> employees = employeeService.searchEmployees(name);

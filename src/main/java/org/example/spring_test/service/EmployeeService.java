@@ -66,6 +66,7 @@ public class EmployeeService {
 
             existingEmployee.setName(employeeReqDTO.getName());
             existingEmployee.setAge(employeeReqDTO.getAge());
+            existingEmployee.setSalary(employeeReqDTO.getSalary());
 
 
             Employee updatedEmployee = employeeRepository.save(existingEmployee);
